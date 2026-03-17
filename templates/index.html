@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps CI/CD Demo</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+font-family:Segoe UI,Arial;
+color:#e0e0e0;
+}
+
+.container{text-align:center}
+
+h1{
+font-size:2.4rem;
+margin-bottom:8px;
+background:linear-gradient(90deg,#00d2ff,#7b2ff7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.badge{
+border:1px solid #7b2ff7;
+display:inline-block;
+padding:4px 14px;
+border-radius:20px;
+font-size:13px;
+margin-bottom:25px;
+}
+
+.pipeline{
+display:flex;
+gap:14px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.step{
+padding:12px 18px;
+border-radius:10px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.15);
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>DevOps CI/CD Pipeline</h1>
+
+<div class="badge">Built by Parikshit Thakre</div>
+
+<div class="pipeline">
+<div class="step">Flask App</div>
+<div class="step">Lint & Test</div>
+<div class="step">Docker Build</div>
+<div class="step">Push → DockerHub</div>
+<div class="step">Deploy → AWS ECS</div>
+</div>
+
+<p style="margin-top:25px;font-size:12px;color:#9ca3af;">
+Automated using GitHub Actions
+</p>
+
+</div>
+
+</body>
+</html>
