@@ -1,1 +1,22 @@
 name: Dependency Scan
+
+on:
+  workflow_call:
+
+jobs:
+  dependency-scan:
+    # server
+    runs-on: ubuntu-latest
+
+    steps:
+      # get the latest code in that server
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: setup python
+        uses: actions/setup-python@v5
+
+      - name: Run pip-audit
+        uses: pypa/gh-action-pip-audit@v1.1.0
+        with:
+          inputs: requirements.txt
