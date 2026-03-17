@@ -27,3 +27,6 @@ jobs:
 
       - name: scan code for syntax
         run: flake8 app.py
+
+      - name: Run SAST
+        run: pip install bandit && bandit -r .
