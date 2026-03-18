@@ -30,7 +30,7 @@ jobs:
          username: ${{ secrets.SSH_EC2_USERNAME }}
          key: ${{ secrets.SSH_EC2_PRIVATE_KEY }}
 
-         source: dockercompose.yml
+         source: docker-compose.yml
          target: ~/devops-project
         
 
