@@ -45,10 +45,9 @@ jobs:
           username: ${{ secrets.SSH_EC2_USERNAME }}
           key: ${{ secrets.SSH_EC2_PRIVATE_KEY }}
           script: |
-           script: |
                 echo "Restarting application on server..."
 
-                echo ${DOCKERHUB_TOKEN } | sudo docker login -u ${DOCKER_USERNAME } --password-stdin
+                echo ${DOCKERHUB_TOKEN} | sudo docker login -u ${DOCKER_USERNAME} --password-stdin
 
                 cd ~/devops-project
 
