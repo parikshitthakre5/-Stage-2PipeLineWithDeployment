@@ -1,8 +1,9 @@
 name: DevSecOps End-to-End Pipeline
 
 on:
-  push:
-    branches: [ main ]
+   push:
+     branches:
+       - main
 
 jobs:
         
@@ -29,3 +30,6 @@ jobs:
 
         image-scan:
             uses: ./.github/workflows/image-scan.yml
+            secrets:
+              DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+              DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
