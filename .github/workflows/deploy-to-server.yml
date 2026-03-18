@@ -6,7 +6,10 @@ on:
 jobs:
   deploy-to-server:
     runs-on: ubuntu-latest
-   
+    env: 
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    
 
     steps:
       
