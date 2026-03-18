@@ -1,0 +1,38 @@
+#This will deploy the application to the server using SSH. It will copy the necessary files to the server and restart the application.
+name: Deploy to Server
+on:
+  workflow_call:
+
+jobs:
+  deploy-to-server:
+    runs-on: ubuntu-latest
+
+
+
+    steps:
+      # - name: Copy Docker Compose file to server
+      #   uses: appleboy/scp-action@v1
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     port: ${{ secrets.PORT }}
+      #     source: "tests/a.txt,tests/b.txt"
+      #     target: your_server_target_folder_path
+
+
+
+
+
+      - name: SSH to Prod server and deploy the application
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_EC2_HOST }}
+          username: ${{ secrets.SSH_EC2_USERNAME }}
+          key: ${{ secrets.SSH_EC2_PRIVATE_KEY }}
+          script: |
+            echo "Deploying application to server..."
+            mkdir -p /home/ubuntu/devops-project
+      
+
+      
