@@ -20,7 +20,9 @@ jobs:
           username: ${{ secrets.SSH_EC2_USERNAME }}
           key: ${{ secrets.SSH_EC2_PRIVATE_KEY }}
           script: |
-            echo "Deploying application to server..."
+            echo "Installing Docker on server..."
+            sudo apt update && sudo apt install docker.io  docker-compose-v2 -y
+            sudo usermod -aG docker $USER && newgrp docker
             mkdir -p /home/ubuntu/devops-project
       
       - name: Copy files via SSH
@@ -44,12 +46,9 @@ jobs:
           key: ${{ secrets.SSH_EC2_PRIVATE_KEY }}
           script: |
             echo "Restarting application on server..."
-            sudo apt update && sudo apt install docker.io  docker-compose-v2 -y
-            sudo usermod -aG docker $USER && newgrp docker
-
             export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
             export DOCKERHUB_TOKEN=${{ secrets.DOCKERHUB_TOKEN }}
 
             echo ${{secrets.DOCKERHUB_TOKEN}} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
-            cd  ~/devops-project && docker compose down && docker compose up -d --build --force-recreate --pull always
+            cd  ~/devops-project && sudo docker compose down && docker compose up -d --build --force-recreate --pull always
