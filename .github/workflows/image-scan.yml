@@ -16,9 +16,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Scan Docker image for vulnerabilities From Trivy Scanner
-        uses: lazy-actions/gitrivy@v3
+        uses: aquasecurity/trivy-action@0.33.1
         with:
-           image: ${{ vars.DOCKER_USERNAME }}/flask-app-ecs:latest
-           token: ${{ secrets.GITHUB_TOKEN }}
-           severity: HIGH,CRITICAL
+           exit-code: '1'
+           severity: 'CRITICAL,HIGH'
            
