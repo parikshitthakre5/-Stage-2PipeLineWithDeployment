@@ -23,13 +23,10 @@ jobs:
 
         docker-build-push:
             uses: ./.github/workflows/docker-build-push.yml
-            secrets:
-              DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-              DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }} 
+            secrets: inherit
+              
 
         image-scan:
             needs: docker-build-push
             uses: ./.github/workflows/image-scan.yml
-            secrets:
-              DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-              DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+            secrets: inherit
