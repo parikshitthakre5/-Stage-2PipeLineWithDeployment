@@ -47,7 +47,7 @@ jobs:
           script: |
                 echo "Restarting application on server..."
 
-                echo ${DOCKERHUB_TOKEN} | sudo docker login -u ${DOCKER_USERNAME} --password-stdin
+                echo ${{ secrets.DOCKERHUB_TOKEN }} | sudo docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
 
                 cd ~/devops-project
 
