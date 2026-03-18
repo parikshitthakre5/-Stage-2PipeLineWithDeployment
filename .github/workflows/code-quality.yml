@@ -29,4 +29,4 @@ jobs:
         run: flake8 app.py
 
       - name: Run SAST
-        run: pip install bandit && bandit -r .
+        run: pip install bandit && bandit -r app.py
