@@ -34,6 +34,8 @@ jobs:
          target: ~/devops-project
         
 
+
+
       - name: SSH to Prod server and restart the application
         uses: appleboy/ssh-action@v1
         with:
