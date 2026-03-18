@@ -23,12 +23,14 @@ jobs:
             uses: ./.github/workflows/docker-lint.yml
 
         docker-build-push:
+            needs: [docker-lint , code-quality, secrets-scan, dependency-scan , docker-lint]
             uses: ./.github/workflows/docker-build-push.yml
             secrets:
               DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
               DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }} 
 
         image-scan:
+            needs: docker-build-push
             uses: ./.github/workflows/image-scan.yml
             secrets:
               DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
